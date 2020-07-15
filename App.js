@@ -4,20 +4,11 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default function App() {
   const [name, setName] = useState('Chris');
-  const [person, setPerson] = useState({name: 'Chris', age: 20});
-
-  const clickHandler = () => {
-    setName('Mariah');
-    setPerson({name: 'Mariah', age: 19});
-  }
+  const [age, setAge] = useState(20);
 
   return (
     <View style={styles.container}>
-      <Text>My name is {name}</Text>
-      <Text>His name is {person.name} and his age is {person.age}.</Text>
-      <View style={styles.buttonContainer}>
-        <Button title='update state' onPress={clickHandler} />
-      </View>
+      <Text>name: {name}, age: {age}</Text>
     </View>
   );
 }
@@ -28,8 +19,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  buttonContainer: {
-    marginTop: 20,
   }
 });
