@@ -1,30 +1,38 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 export default function App() {
 
   const [people, setPeople] = useState([
-    { name: 'chris', key: '1' },
-    { name: 'mariah', key: '2' },
-    { name: 'zach', key: '3' },
-    { name: 'michael', key: '4' },
-    { name: 'toby', key: '5' },
-    { name: 'dwight', key: '6' },
-    { name: 'angela', key: '7' },
+    { name: 'chris', id: '1' },
+    { name: 'mariah', id: '2' },
+    { name: 'zach', id: '3' },
+    { name: 'michael', id: '4' },
+    { name: 'toby', id: '5' },
+    { name: 'dwight', id: '6' },
+    { name: 'angela', id: '7' },
 
   ])
 
   return (
     <View style={styles.container}>
+      <FlatList
+        numColumns = {2}
+        keyExtractor = {(person) => person.id}
+        data={people}
+        renderItem = {({ item }) => (
+          <Text style={styles.peep}>{item.name}</Text>
+        )}
+      />
 
-      <ScrollView>
+      {/* <ScrollView>
         { people.map(person => (
-          <View key={person.key}>
+          <View id={person.id}>
               <Text style={styles.peep}>{person.name}</Text>
           </View>
         ))}
-      </ScrollView>
+      </ScrollView> */}
     </View>
   );
 }
@@ -40,6 +48,7 @@ const styles = StyleSheet.create({
     marginTop: 24,
     padding: 30,
     backgroundColor: 'pink',
-    fontSize: 24
+    fontSize: 24,
+    marginHorizontal: 10,
   }
 });
